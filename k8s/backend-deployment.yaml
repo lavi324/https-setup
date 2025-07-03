@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: football-backend
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: football-backend
+  template:
+    metadata:
+      labels:
+        app: football-backend
+    spec:
+      containers:
+      - name: backend
+        image: lavi324/first_api-backend:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: MONGO_URI
+        - name: MONGO_DB
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: MONGO_DB

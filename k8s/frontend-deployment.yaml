@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: football-frontend
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: football-frontend
+  template:
+    metadata:
+      labels:
+        app: football-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: lavi324/first_api-frontend:1.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000

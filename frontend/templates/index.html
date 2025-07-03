@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Standings API Documentation</title>
+  <!-- Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container my-5">
+    <h1 class="mb-4">🏆 Football Standings API</h1>
+    <p>Welcome to the Football League Standings API. This service provides read-only access to football league tables (standings) via a simple HTTP API.</p>
+
+    <h2 class="mt-5">API Endpoint</h2>
+    <p>The API has one GET endpoint to retrieve league standings:</p>
+    <ul>
+      <li><code><strong>/api/standings/&lt;league_name&gt;</strong></code> – Returns the standings for the specified league in JSON format.</li>
+    </ul>
+    <p>Replace <code>&lt;league_name&gt;</code> with the identifier of the league you want. For example:</p>
+    <ul>
+      <li><code>/api/standings/premierleague</code> – Standings for Premier League.</li>
+      <li><code>/api/standings/laliga</code> – Standings for La Liga.</li>
+      <li><code>/api/standings/seriea</code> – Standings for Serie A.</li>
+      <li><code>api/standings/bundesliga</code> - Standings for Bundesliga.</li>
+      <li><code>api/standings/ligue1</code> - Standings for Ligue 1.</li>
+    </ul>
+
+    <h3 class="mt-4">Example Response</h3>
+    <p>Here is an example of a JSON response for a league (showing a couple of top teams):</p>
+    <pre><code>[
+  {
+    "position": 1,
+    "team": "FC Awesome",
+    "played": 38,
+    "won": 30,
+    "drawn": 5,
+    "lost": 3,
+    "points": 95
+  },
+  {
+    "position": 2,
+    "team": "Real Great Team",
+    "played": 38,
+    "won": 28,
+    "drawn": 7,
+    "lost": 3,
+    "points": 91
+  }
+]
+</code></pre>
+    <p>Each object in the array represents a team’s standing, with fields like <code>position</code>, <code>team</code> name, number of matches played (<code>played</code>), wins, draws, losses, and total points. The data is read-only; updates must be made in the database directly.</p>
+
+    <h2 class="mt-5">Usage</h2>
+    <p>To use the API, make GET requests to the endpoint (for example, using a web browser or <code>curl</code>). The landing page you are viewing is static documentation; the actual data comes from the API endpoint.</p>
+
+    <p class="mt-5 text-muted">© 2025 Football Standings API - Lavi Alduby</p>
+  </div>
+</body>
+</html>
