@@ -3,10 +3,13 @@ kind: Ingress
 metadata:
   name: football-ingress
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
-    - http:
+    - host: lavi324.duckdns.org
+      http:
         paths:
           - path: /api/standings
             pathType: Prefix
@@ -22,3 +25,7 @@ spec:
                 name: frontend-service
                 port:
                   number: 5000
+  tls:
+    - hosts:
+        - lavi324.duckdns.org
+      secretName: lavi324-tls
