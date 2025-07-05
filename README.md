@@ -1,17 +1,18 @@
-In this project, you will enable HTTPS for a Kubernetes application deployed on GKE using a free DuckDNS subdomain and an automated Let’s Encrypt certificate via cert-manager.
+**Note: This project is a continuation of the sport-tables-api project, adding HTTPS support.**
 
-The project consists of a Dynamic DNS configuration (DuckDNS), a TLS certificate manager (cert-manager), and a secured Ingress for routing HTTPS traffic to your backend and frontend services.
 
-All components will be deployed to Kubernetes using standard manifests: Ingress, Secret, Certificate, ClusterIssuer, and Services.
+**In this project, you will enable HTTPS for a Kubernetes applications deployed on GKE using a free DuckDNS subdomain and a Let’s Encrypt free TLS certificate via cert-manager.**
+
+All components will be deployed to Kubernetes using those manifests: Ingress, Certificate and ClusterIssuer.
 
 ***Start:***
 
 1) Open a new GitHub repo, pull the repo into the cloud shell and config the GitHub user for a future Push requests.
 
 2) Create a DuckDNS account and a subdomain:  
-Go to 'https://www.duckdns.org/', sign in with GitHub, and register a new subdomain (e.g. 'myapi.duckdns.org').
+Go to 'https://www.duckdns.org/', sign in, and register a new subdomain.
 
-3) Copy the external IP of your NGINX Ingress Controller and set it as the IP address for the DuckDNS subdomain using the DuckDNS dashboard.
+3) Copy the external IP of your NGINX Ingress Controller and set it as the IP address for the DuckDNS subdomain.
 
 4) Confirm DNS is configured correctly:
 ```bash
@@ -22,7 +23,7 @@ Both commands should return the external IP of your NGINX Ingress Controller.
 
 5) Install cert-manager into the cluster:
 ```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.2/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.4/cert-manager.yaml
 ```
 
 6) Wait for all cert-manager pods to be in 'Running' status:
@@ -134,7 +135,7 @@ kubectl apply -f ingress.yaml
 Test that HTTPS is working:
 ```bash
 curl -I https://myapi.duckdns.org
-curl -I http://myapi.duckdns.org
+curl -v https://myapi.duckdns.org
 ```
 You should receive a `200 OK` for HTTPS and a `301/302` redirect from HTTP to HTTPS.
 
