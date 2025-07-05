@@ -137,6 +137,6 @@ Test that HTTPS is working:
 curl -I https://myapi.duckdns.org
 curl -v https://myapi.duckdns.org
 ```
-You should receive a `200 OK` for HTTPS and a `301/302` redirect from HTTP to HTTPS.
+
 
 
